@@ -16,9 +16,11 @@
       "architect": {
         "build": {
           "builder": "@angular/build:application",
+
           "options": {
-            "browser": "src/main.ts",
-            "tsConfig": "tsconfig.app.json",
+             "browser": "src/main.ts",
+              "index": "src/index.html",
+               "tsConfig": "tsconfig.app.json",
             "assets": [
               {
                 "glob": "**/*",
