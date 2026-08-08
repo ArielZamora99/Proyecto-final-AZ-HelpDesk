@@ -1,0 +1,58 @@
+<header class="barra">
+    <h1>Reportar Incidente</h1>
+    <p>Registro de nuevos tickets</p>
+</header>
+
+<nav class="nav">
+    <ul>
+        <li><a routerLink="/dashboard">Inicio</a></li>
+        <li><a routerLink="/tickets">Reportar Incidente</a></li>
+        <li><a routerLink="/historial">Revisar estado</a></li>
+    </ul>
+</nav>
+
+<main>
+    <section class="card primario">
+        <div class="alert"  *ngIf="mostrarMensaje"  [ngClass]="tipoMensaje">{{mensaje}} </div>
+        <h2>📝 Formulario de Registro</h2>
+        <p> Completa los datos del incidente para generar un ticket. </p>
+
+        <form class="form">
+            <label> Título del incidente </label><input type="text" [(ngModel)]="titulo" name="titulo" placeholder="Ej: No hay internet">
+            <label> Categoría </label>
+            <select [(ngModel)]="id_categoria" name="categoria">
+                <option value="">Seleccione una opción</option>
+                <option *ngFor="let categoria of categorias" [value]="categoria.id_categoria">
+                    {{categoria.nombre}}
+                </option>
+            </select>
+
+            <fieldset>
+                <legend>Prioridad</legend>
+
+                 <div class="opciones-prioridad">
+                    <label *ngFor="let prioridad of prioridades">
+                        <input
+                            type="radio"
+                            name="prioridad"
+                            [value]="prioridad.id_prioridad"
+                            [(ngModel)]="id_prioridad"
+                        >
+                        {{ prioridad.nombre }}
+                    </label>
+                </div>
+            </fieldset>
+            
+   
+            <label>Descripción</label><textarea rows="5" [(ngModel)]="descripcion" name="descripcion" placeholder="Describe el problema..."></textarea>
+            
+            <div class="alert-registro" *ngIf="mensaje"> ⚠ {{mensaje}} </div>
+            <button type="button" class="boton primario" (click)="guardarTicket()"> Registrar Ticket </button>
+        </form>
+        
+    </section>
+</main>
+
+<footer class="footerSistema">
+    <p>Autor: Ariel Zamora</p>
+</footer>

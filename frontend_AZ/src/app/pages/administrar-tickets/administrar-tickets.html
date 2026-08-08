@@ -1,0 +1,50 @@
+<header class="barra">
+    <h1>Administración de Tickets</h1>
+    <p>Asignación y seguimiento de incidentes</p>
+</header>
+
+<nav class="nav">
+    <ul>
+        <li><a routerLink="/dashboard">🏠 Inicio</a></li>
+    </ul>
+    
+</nav>
+
+<main>
+    <section class="card">
+        <h2>Tickets registrados</h2>
+            <table>
+                <thead>
+                    <tr>
+
+                        <th>ID</th>
+                        <th>Código</th>
+                        <th>Título</th>
+                        <th>Usuario</th>
+                        <th>Técnico</th>
+                        <th>Prioridad</th>
+                        <th>Estado</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let ticket of tickets">
+                        <td>{{ticket.id_ticket}}</td>
+                        <td>{{ticket.codigo}}</td>
+                        <td>{{ticket.titulo}}</td>
+                        <td>{{ticket.usuario}}</td>
+                        <td>{{ticket.tecnico || 'Sin asignar'}}</td>
+                        <td>{{ticket.prioridad}}</td>
+                        <td>{{ticket.estado}}</td>
+                        <td>
+                            <select [(ngModel)]="ticket.id_tecnico">
+                                <option [ngValue]="null"> Seleccione </option>
+                                <option *ngFor="let tecnico of tecnicos" [value]="tecnico.id_usuario"> {{tecnico.nombre}} </option>
+                           </select>
+                           <button class="boton primario" (click)="asignar(ticket)"> Asignar </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
+</main>

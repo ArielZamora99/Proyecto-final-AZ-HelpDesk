@@ -1,0 +1,38 @@
+<header class="barra">
+    <h1>Mi Perfil</h1>
+    <p>Información personal del usuario</p>
+</header>
+
+<nav class="nav">
+    <ul>
+        <li>
+            <a routerLink="/dashboard">🏠 Volver al inicio</a>
+        </li>
+    </ul>
+</nav>
+
+<main>
+
+    <section class="perfil-contenedor" *ngIf="usuario">
+        <article class="perfil-card">
+            <div class="perfil-header"> 
+                <div class="avatar">  👤  </div>
+                <div>
+                    <h2>{{usuario.nombres}} {{usuario.apellidos}}</h2>
+                    <span>{{usuario.rol}}</span>
+                </div>
+            </div>
+            <h2>Datos personales</h2>
+
+            <div class="datos-perfil">
+                <div class="dato-perfil"> <span>👤 Nombres </span><strong>{{usuario.nombres}}</strong></div>
+                <div class="dato-perfil"> <span>👤 Apellidos </span><strong>{{usuario.apellidos}}</strong></div>
+                <div class="dato-perfil"> <span>📧 Correo </span><strong>{{usuario.correo}}</strong></div> 
+                <div class="dato-perfil"> <span>📱 Teléfono </span><strong>{{usuario.telefono}}</strong></div>
+                <div class="dato-perfil"> <span>🔑 Rol </span><strong>{{usuario.rol}}</strong></div>
+            </div>
+
+            <div class="acciones"> <a routerLink="/actualizar-perfil" class="boton"> ✏️ Actualizar datos</a></div>
+        </article>
+    </section>
+</main>

@@ -1,0 +1,58 @@
+<header class="barra">
+    <h1>Administración de Estados</h1>
+    <p>Gestionar estados de los tickets</p>
+</header>
+
+<nav class="nav">
+    <ul>
+        <li><a routerLink="/dashboard"> 🏠 Inicio </a></li>
+    </ul>
+</nav>
+
+<main>
+    <section class="card" style="margin-bottom:10px;">
+        <h2> {{id_estado ? 'Editar Estado':'Nuevo Estado'}} </h2>
+        <label> Nombre </label>
+        <input type="text" [(ngModel)]="nombre" placeholder="Ej: Pendiente">
+
+        <label>Descripción</label>
+        <textarea [(ngModel)]="descripcion" placeholder="Descripción del estado"></textarea>
+        
+        <button class="boton primario" (click)="guardarEstado()"> {{id_estado ? 'Actualizar':'Guardar'}} </button>
+        <button *ngIf="id_estado" class="boton advertencia" (click)="limpiar()"> Cancelar </button>
+    </section>
+    
+    <section class="card">
+        <h2>Estados registrados</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <tr *ngFor="let estado of estados">
+                    <td> {{estado.id_estado}} </td>
+                    <td> {{estado.nombre}} </td>
+                    <td> {{estado.descripcion}} </td>
+                    <td> 
+                        <span *ngIf="estado.activo"> 🟢 Activo</span>
+                        <span *ngIf="!estado.activo"> 🔴 Inactivo </span>
+                    </td>
+                    <td>
+                        <button class="boton primario" (click)="editar(estado)"> Editar </button>
+                        <button class="boton peligro" (click)="eliminar(estado.id_estado)"> {{estado.activo ? 'Desactivar':'Activar'}} </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+<footer class="footerSistema">
+    <p>Autor: Ariel Zamora</p>
+</footer>

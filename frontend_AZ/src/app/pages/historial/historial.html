@@ -1,0 +1,115 @@
+
+<header class="barra">
+    <div class="logo-sistema">
+        
+        <div>
+            <h1>Seguimiento de Incidentes</h1>
+            <p>Historial y seguimiento de atención de los tickets</p>
+        </div>
+    </div>
+</header>
+
+<nav class="nav">
+    <ul>
+        <li>
+            <a routerLink="/dashboard">🏠 Volver al inicio</a>
+        </li>
+    </ul>
+    
+</nav>
+
+<main>
+
+    <section class="historial-contenedor">
+
+        <article
+            class="ticket-historial"
+            *ngFor="let ticket of ticketsAgrupados">
+
+            <!-- CABECERA DEL TICKET -->
+            <div class="ticket-header">
+
+                <div>
+                    <h2>🎫 {{ticket.codigo}}</h2>
+                    <p>{{ticket.titulo}}</p>
+                </div>
+
+                <span class="estado">
+                    {{ticket.estado}}
+                </span>
+
+            </div>
+
+
+            <!-- INFORMACIÓN DEL TICKET -->
+            <div class="datos-ticket">
+
+                <div>
+                    <strong>Categoría</strong>
+                    <span>📂 {{ticket.categoria}}</span>
+                </div>
+
+                <div>
+                    <strong>Prioridad</strong>
+                    <span>⚠️ {{ticket.prioridad}}</span>
+                </div>
+
+                <div>
+                    <strong>Técnico asignado</strong>
+                    <span>
+                        🛠 {{ticket.tecnico || 'Pendiente'}}
+                    </span>
+                </div>
+
+            </div>
+
+
+            <!-- SEGUIMIENTO -->
+            <h3 class="titulo-seguimiento">
+                Seguimiento del incidente
+            </h3>
+
+
+            <div class="timeline-horizontal">
+
+                <div
+                    class="evento-horizontal"
+                    *ngFor="let evento of ticket.eventos; let ultimo = last">
+
+                    <!-- CONECTOR -->
+                    <div
+                        class="linea"
+                        *ngIf="!ultimo">
+                    </div>
+                    <div class="circulo"
+                        [class.ultimo-evento]="ultimo">
+                            ✓
+                    </div>
+
+
+                    <!-- CONTENIDO -->
+                    <div class="contenido-evento">
+
+                        <h4>
+                            {{evento.accion}}
+                        </h4>
+
+                        <p>
+                            {{evento.observacion}}
+                        </p>
+
+                        <small>
+                            🕒 {{evento.fecha | date:'dd/MM/yyyy HH:mm'}}
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </section>
+
+</main>

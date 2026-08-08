@@ -1,0 +1,52 @@
+<header class="barra">
+    <h1>Tickets Asignados</h1>
+    <p>Gestión de incidencias del técnico</p>
+</header>
+
+<nav class="nav">
+    <ul>
+        <li> <a routerLink="/dashboard">Inicio</a> </li>
+        <li> <a routerLink="/historial">Historial</a></li>
+    </ul>
+</nav>
+
+<section class="card">
+    <h2>📋 Mis Tickets</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Título</th>
+                <th>Usuario</th>
+                <th>Categoría</th>
+                <th>Prioridad</th>
+                <th>Estado</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let ticket of ticketsAsignados">
+                <td>{{ticket.codigo}}</td>
+                <td>{{ticket.titulo}}</td>
+                <td>{{ticket.usuario}}</td>
+                <td>{{ticket.categoria}}</td>
+                <td>{{ticket.prioridad}}</td>
+                <td>
+                    <select 
+                        [(ngModel)]="ticket.id_estado"
+                            name="estado{{ticket.id_ticket}}">
+                        <option 
+                            *ngFor="let estado of estados"
+                            [ngValue]="estado.id_estado"
+                            [hidden]="estado.id_estado == 1 || estado.id_estado == 2">
+                            {{estado.nombre}}
+                        </option>
+                    </select>
+                </td>
+                <td>
+                    <button class="boton primario" (click)="actualizarEstado(ticket)"> Guardar </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>

@@ -1,0 +1,275 @@
+
+/* =========================================================
+   CONTENEDOR
+========================================================= */
+
+main {
+    padding: 30px 40px;
+    background: #f1f5f9;
+    min-height: calc(100vh - 150px);
+}
+
+.historial-contenedor {
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* ==========================================================
+   ÚLTIMO CAMBIO DEL HISTORIAL
+   ========================================================== */
+
+.circulo.ultimo-evento {
+    width: 38px;
+    height: 38px;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 0 0 0 5px rgba(0, 123, 255, 0.12);
+}
+/* ÚLTIMO EVENTO DEL HISTORIAL */
+.timeline .evento:last-child .circulo {
+    width: 46px;
+    height: 46px;
+    font-size: 24px;
+    font-weight: 900;
+    transform: scale(1.15);
+    box-shadow: 0 0 0 6px rgba(0, 123, 255, 0.15);
+}
+
+/* =========================================================
+   TARJETA DEL TICKET
+========================================================= */
+
+.ticket-historial {
+    background: white;
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 25px;
+    box-shadow: 0 3px 12px rgba(15, 23, 42, 0.08);
+    border: 1px solid #e2e8f0;
+}
+
+
+/* =========================================================
+   CABECERA DEL TICKET
+========================================================= */
+
+.ticket-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.ticket-header h2 {
+    margin: 0;
+    font-size: 20px;
+    color: #1e293b;
+}
+
+.ticket-header p {
+    margin: 5px 0 0;
+    color: #64748b;
+    font-size: 15px;
+}
+
+.estado {
+    padding: 7px 15px;
+    border-radius: 20px;
+    background: #e0f2fe;
+    color: #0369a1;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   DATOS DEL TICKET
+========================================================= */
+
+.datos-ticket {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+    padding: 15px;
+    background: #f8fafc;
+    border-radius: 10px;
+}
+
+.datos-ticket div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.datos-ticket strong {
+    font-size: 12px;
+    color: #64748b;
+    text-transform: uppercase;
+}
+
+.datos-ticket span {
+    color: #1e293b;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   TITULO SEGUIMIENTO
+========================================================= */
+
+.titulo-seguimiento {
+    margin: 28px 0 20px;
+    font-size: 17px;
+    color: #334155;
+}
+
+
+/* =========================================================
+   TIMELINE HORIZONTAL
+========================================================= */
+
+.timeline-horizontal {
+    display: flex;
+    align-items: flex-start;
+    overflow-x: auto;
+    padding: 15px 10px 25px;
+}
+
+
+/* =========================================================
+   EVENTO
+========================================================= */
+
+.evento-horizontal {
+    position: relative;
+    min-width: 220px;
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* =========================================================
+   CÍRCULO
+========================================================= */
+
+.circulo {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #2563eb;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: bold;
+    font-size: 16px;
+
+    position: relative;
+    z-index: 2;
+
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+}
+
+
+/* =========================================================
+   LÍNEA ENTRE EVENTOS
+========================================================= */
+
+.linea {
+    position: absolute;
+
+    top: 18px;
+    left: calc(50% + 19px);
+
+    width: 181px;
+    height: 3px;
+
+    background: #cbd5e1;
+
+    z-index: 1;
+}
+
+
+/* =========================================================
+   CONTENIDO DEL EVENTO
+========================================================= */
+
+.contenido-evento {
+    margin-top: 14px;
+    width: 190px;
+
+    text-align: center;
+
+    padding: 14px;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+
+    background: #ffffff;
+}
+
+.contenido-evento h4 {
+    margin: 0 0 8px;
+    font-size: 14px;
+    color: #1e293b;
+}
+
+.contenido-evento p {
+    margin: 0 0 10px;
+
+    font-size: 13px;
+    line-height: 1.4;
+
+    color: #64748b;
+}
+
+.contenido-evento small {
+    color: #94a3b8;
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   SCROLL HORIZONTAL
+========================================================= */
+
+.timeline-horizontal::-webkit-scrollbar {
+    height: 7px;
+}
+
+.timeline-horizontal::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 10px;
+}
+
+.timeline-horizontal::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 800px) {
+
+    main {
+        padding: 20px;
+    }
+
+       .datos-ticket {
+        grid-template-columns: 1fr;
+    }
+
+    .ticket-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+}

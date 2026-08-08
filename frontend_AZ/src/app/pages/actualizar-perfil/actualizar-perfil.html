@@ -1,0 +1,48 @@
+<header class="barra">
+    <h1>Actualizar Perfil</h1>
+    <p>Modifica tus datos personales del sistema</p>
+</header>
+
+<nav class="nav">
+    <ul>
+        <li>
+            <a routerLink="/dashboard">🏠 Volver al inicio</a>
+        </li>
+    </ul>
+</nav>
+
+<section class="actualizar-contenedor">
+    <article class="actualizar-card">
+        <div class="perfil-header">
+            <div class="avatar">  👤  </div>
+            <div> <h2>  {{nombres}} {{apellidos}} </h2>
+                <span> Actualización de información </span>
+            </div>
+        </div>
+
+        <div class="formulario">
+            <div class="campo">
+                <label> Nombres </label>
+                <input  type="text" [(ngModel)]="nombres">
+            </div>
+
+            <div class="campo">
+                <label>Apellidos</label>
+                <input type="text" [(ngModel)]="apellidos">
+           </div>
+
+            <div class="campo">
+                <label> Correo electrónico </label>
+                <input   type="email" [(ngModel)]="correo">
+            </div>
+
+            <div class="campo">
+                <label>Teléfono </label>
+                <input type="text" [(ngModel)]="telefono">
+            </div>
+
+        </div>
+
+        <button class="boton guardar" (click)="guardar()"> 💾 Guardar cambios </button>
+    </article>
+</section>

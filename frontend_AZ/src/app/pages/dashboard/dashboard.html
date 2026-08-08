@@ -1,0 +1,161 @@
+<header class="barra">
+    <div class="logo-sistema">
+        <div class="logo-icono"> 🛠 </div>
+        <div>
+            <h1>AZ HELP DESK</h1>
+            <p>Gestión inteligente de soporte TI</p>
+        </div>
+    </div>
+</header>
+
+<nav class="nav">
+    <ul>
+        <li><a routerLink="/dashboard"> 🏠 Inicio </a></li>
+
+        <!-- CLIENTE -->
+        <li *ngIf="mostrarCliente"> <a routerLink="/tickets"> 🎫 Reportar Incidente</a></li>
+        <li *ngIf="mostrarCliente"> <a routerLink="/historial"> 📋 Mis Tickets </a> </li>
+
+        <!-- TECNICO -->
+         <li *ngIf="mostrarTecnico"><a routerLink="/tickets-asignados"> 🛠 Tickets Asignados</a> </li>
+        <li *ngIf="mostrarTecnico"><a routerLink="/historial"> 🛠 Historial</a> </li>
+
+        <!-- ADMIN -->
+        <li *ngIf="mostrarAdministrador"><a routerLink="/usuarios">👥 Usuarios</a></li>
+        <li *ngIf="mostrarAdministrador"> <a routerLink="/categorias">⚙ Categorías</a></li>
+        <li *ngIf="mostrarAdministrador"><a routerLink="/prioridades">⚠ Prioridades</a></li>
+        <li *ngIf="mostrarAdministrador"><a routerLink="/estados">📌 Estados</a></li>
+
+    </ul>
+
+    <div class="perfil">
+        <button class="perfil-btn">👤 {{nombreUsuario}} ▼</button>
+        <div class="menu-perfil">
+            <a routerLink="/perfil">👤 Mi perfil</a>
+            <a routerLink="/actualizar-perfil">⚙ Actualizar datos</a>
+            <a href="" (click)="cerrarSesion(); $event.preventDefault()">🚪 Cerrar sesión</a>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <section class="bienvenida">
+        <h2>Bienvenido al sistema</h2>
+        <p>Administra solicitudes, asigna técnicos y controla la resolución de incidentes tecnológicos.</p>
+    </section>
+
+    <!-- CLIENTE -->
+    <section *ngIf="mostrarCliente" class="grid grid-3">
+        <article class="card advertencia">
+            <div class="card-icon">  📂 </div>
+            <h3>Registro de incidentes</h3>
+            <p>Crea nuevos tickets de soporte técnico.</p>
+            <a routerLink="/tickets" class="boton">Crear ticket</a>
+        </article>
+        
+        <article class="card exito">
+            <div class="card-icon">🔍</div>
+            <h3>Mis Tickets</h3>
+            <p>Consulta el estado de tus solicitudes.</p>
+            <a routerLink="/historial" class="boton">Ver historial</a>
+        </article>
+    </section>
+
+    <!-- TECNICO -->
+    <section *ngIf="mostrarTecnico" class="grid grid-3">
+        <article class="card peligro">
+            <div class="card-icon">🛠</div>
+            <h3>Tickets asignados</h3>
+            <p>Revisa incidentes pendientes de atención.</p>
+           <a routerLink="/tickets-asignados" class="boton">Administrar</a>
+        </article>
+
+        <article class="card proceso">
+            <div class="card-icon">📋</div>
+            <h3>Historial atención</h3>
+            <p>Consulta trabajos realizados.</p>
+            <a routerLink="/historial" class="boton">Consultar</a>
+        </article>
+    </section>
+    
+    <!-- ADMINISTRADOR -->
+    <section *ngIf="mostrarAdministrador">
+        <div class="grid grid-3">
+            <article class="card primario">
+                <div class="card-icon">👥</div>
+                <h3>Usuarios</h3>
+                <p>Administración de clientes y técnicos registrados.</p>
+                <a routerLink="/usuarios" class="boton">Gestionar</a>
+            </article>
+
+            <article class="card peligro">
+                <div class="card-icon">🎫</div>
+                <h3>Tickets</h3>
+                <p>Supervisión completa de incidentes.</p>
+                <a routerLink="/administrar-tickets" class="boton">Administrar</a>
+            </article>
+
+            <article class="card advertencia">
+                <div class="card-icon">🛠</div>
+                <h3>Técnicos</h3>
+                <p>Seguimiento del trabajo técnico.</p>
+                <a routerLink="/historial" class="boton">Consultar</a>
+            </article>
+        </div>
+    </section>
+
+    <!-- ESTADISTICAS -->
+    <h2 class="titulo-seccion" *ngIf="mostrarAdministrador">📊 Resumen de incidentes</h2>
+    <section class="grid grid-4">
+        <article class="card peligro estadistica" *ngIf="mostrarAdministrador">
+            <div class="card-icon">🎫</div>
+            <div>
+                <p>Total Tickets</p>
+                <h2>{{totalTickets}}</h2>
+                <small>Registrados en el sistema</small>
+            </div>
+        </article>
+
+        <article 
+            class="card"
+            [ngClass]="obtenerColorEstado(estado.nombre)"
+            *ngFor="let estado of resumenEstados">
+            <div class="card-icon">📌</div>
+            <div>
+                <p>{{estado.nombre}}</p>
+                <h2>{{estado.total}}</h2>
+                <small>Tickets</small>
+            </div>
+        </article>
+    </section>
+
+    <h2 class="titulo-seccion" *ngIf="mostrarAdministrador">⚠ Prioridades</h2>
+    <section class="grid grid-4">
+        <article 
+            class="card"
+            [ngClass]="obtenerColorPrioridad(prioridad.nombre)"
+            *ngFor="let prioridad of resumenPrioridades">
+            <div class="card-icon">⚠️</div>
+            <div>
+                <p>Prioridad {{prioridad.nombre}}</p>
+                <h2>{{prioridad.total}}</h2>
+                <small>Tickets registrados</small>
+            </div>
+        </article>
+    </section>
+
+    <section class="actividad" *ngIf="mostrarAdministrador">
+        <h2>📌 Actividad reciente</h2>
+        <div class="actividad-item">  
+            <span>🟢</span>
+            <div>
+                <strong>Sistema operativo correctamente</strong>
+                <p>Dashboard actualizado</p>
+                <small>Última sincronización</small>
+            </div>
+        </div>
+    </section>
+</main>
+<footer class="footerSistema">
+    <p>Autor: Ariel Zamora</p>
+</footer>

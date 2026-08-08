@@ -1,0 +1,92 @@
+
+.actualizar-contenedor{
+
+    display:flex;
+    justify-content:center;
+    padding:30px;
+
+}
+
+.actualizar-card{
+
+    width:500px;
+    background:white;
+    border-radius:18px;
+    padding:30px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.12);
+
+}
+
+.perfil-header{
+
+    display:flex;
+    align-items:center;
+    gap:20px;
+
+    padding-bottom:25px;
+    margin-bottom:25px;
+
+    border-bottom:1px solid #e5e7eb;
+
+}
+
+.avatar{
+
+    width:70px;
+    height:70px;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:35px;
+
+    background:#e0f2fe;
+
+}
+
+.perfil-header h2{
+
+    margin:0;
+    color:#1e293b;
+
+}
+
+.perfil-header span{
+
+    color:#64748b;
+    font-size:14px;
+
+}
+
+.formulario{
+
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+
+}
+
+
+
+.campo label{
+
+    font-weight:bold;
+    color:#334155;
+
+}
+
+
+.guardar{
+
+    margin-top:25px;
+
+    width:100%;
+
+    font-size:16px;
+
+}

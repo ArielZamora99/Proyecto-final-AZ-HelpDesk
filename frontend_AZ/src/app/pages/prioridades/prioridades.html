@@ -1,0 +1,62 @@
+<header class="barra">
+    <h1>Administración de Prioridades</h1>
+    <p>Gestionar niveles de atención de tickets</p>
+</header>
+
+<nav class="nav">
+    <ul>
+        <li><a routerLink="/dashboard">🏠 Inicio</a></li>
+    </ul>
+</nav>
+
+<main>
+    <section class="card" style="margin-bottom:10px;">
+        <h2>{{id_prioridad ? 'Editar Prioridad':'Nueva Prioridad'}}</h2>
+        <label>Nombre</label>
+        <input type="text" [(ngModel)]="nombre" placeholder="Ej: Alta">
+        <label> Nivel</label>
+        
+        <select [(ngModel)]="nivel">
+            <option [ngValue]="null"> Seleccione </option>
+            <option *ngFor="let prioridad of prioridades"[value]="prioridad.nivel" >
+                {{prioridad.nivel}} - {{prioridad.nombre}}
+            </option>
+        </select>
+
+        <button class="boton primario" (click)="guardarPrioridad()"> {{id_prioridad ? 'Actualizar':'Guardar'}}</button>
+        <button *ngIf="id_prioridad" class="boton advertencia" (click)="limpiar()"> Cancelar </button>
+    </section>
+
+    <section class="card">
+        <h2>Prioridades registradas</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Nivel</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let prioridad of prioridades">
+                    <td> {{prioridad.id_prioridad}} </td>
+                    <td> {{prioridad.nombre}}</td>
+                    <td> {{prioridad.nivel}}</td>
+                    <td> 
+                        <span *ngIf="prioridad.activo"> 🟢 Activa</span>
+                        <span *ngIf="!prioridad.activo">🔴 Inactiva</span>
+                    </td>
+                    <td>
+                        <button class="boton primario" (click)="editar(prioridad)"> Editar</button>
+                        <button class="boton peligro"  (click)="eliminar(prioridad.id_prioridad)">{{prioridad.activo ? '🚫 Desactivar':'✅ Activar'}}   </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+<footer class="footerSistema">
+    <p>Autor: Ariel Zamora</p>
+</footer>

@@ -1,0 +1,31 @@
+
+.datos-perfil{
+    margin-top:25px;
+    display:grid;
+    gap:15px;
+}
+.dato-perfil{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#f8fafc;
+    padding:15px 20px;
+    border-radius:10px;
+    border-left:5px solid #2563eb;
+}
+
+.dato-perfil span{
+    color:#475569;
+    font-weight:600;
+}
+
+.dato-perfil strong{
+    color:#1e293b;
+    font-size:16px;
+}
+
+.acciones{
+    text-align:center;
+    margin-top:25px;
+}

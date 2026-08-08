@@ -1,0 +1,60 @@
+<header class="barra">
+    <h1>Administración de Categorías</h1>
+    <p>Gestionar tipos de incidentes</p>
+</header>
+
+<nav class="nav">
+    <ul>
+        <li><a routerLink="/dashboard">🏠 Inicio</a></li>
+    </ul>
+</nav>
+
+<main>
+    <section class="card" style="margin-bottom:10px;">
+        <h2>{{ id_categoria ? 'Editar Categoría' : 'Nueva Categoría' }}</h2>
+        <label>Nombre</label>
+        <input type="text" [(ngModel)]="nombre" placeholder="Ingrese el nombre">
+        <label>Descripción</label>
+        <textarea rows="4" [(ngModel)]="descripcion" placeholder="Ingrese la descripción"></textarea>
+        <div style="margin-top:15px;">
+            <button class="boton primario" (click)="guardarCategoria()"> {{ id_categoria ? 'Actualizar Categoría' : 'Guardar Categoría' }}</button>
+            <button *ngIf="id_categoria" class="boton advertencia" type="button" (click)="limpiar()"> Cancelar </button>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>Categorías registradas</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Acciones</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let categoria of categorias">
+                    <td>{{categoria.id_categoria}}</td>
+                    <td>{{categoria.nombre}}</td>
+                    <td>{{categoria.descripcion}}</td>
+                    <td>
+                        <span *ngIf="categoria.activo"> 🟢 Activa </span>
+                        <span *ngIf="!categoria.activo">🔴 Inactiva </span>
+                    </td>
+                    <td>
+                        <button class="boton primario" (click)="editar(categoria)"> Editar </button>
+                        <button class="boton peligro" (click)="eliminar(categoria.id_categoria)"> 
+                                    {{ categoria.activo ? 'Desactivar' : '  Activar....' }}</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+
+<footer class="footerSistema">
+    <p>Autor: Ariel Zamora</p>
+</footer>
