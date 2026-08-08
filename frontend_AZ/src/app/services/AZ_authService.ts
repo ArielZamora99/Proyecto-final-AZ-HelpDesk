@@ -6,13 +6,13 @@
 */
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
-
 export class AZAuthService {
 
-    private api = 'http://localhost:3000/api/auth';
-
+    private api = `${environment.apiUrl}/auth`;
+   
     constructor(private http: HttpClient) {}
 
     login(datos:any){
@@ -20,7 +20,7 @@ export class AZAuthService {
     }
 
    registrar(datos:any){
-        return this.http.post( 'http://localhost:3000/api/usuarios', datos );
+        return this.http.post(`${environment.apiUrl}/usuarios`, datos);
     }
 
 }

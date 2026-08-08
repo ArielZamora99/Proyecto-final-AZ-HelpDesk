@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn:'root'
 })
 export class AZUsuarioService {
 
-  private url = 'http://localhost:3000/api/usuarios'; //url node backend puerto 300
-
+  private url = `${environment.apiUrl}/usuarios`;
+  
   constructor(private http: HttpClient){}
 
   //get general

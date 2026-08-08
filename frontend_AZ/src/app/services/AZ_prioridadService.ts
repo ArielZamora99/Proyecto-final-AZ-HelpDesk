@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn:'root' })
 
 export class AZPrioridadService{ 
 
-  private url = 'http://localhost:3000/api/prioridades';
-
+  private url = `${environment.apiUrl}/prioridades`;
+  
   constructor( private http:HttpClient ){}
   // get obtener todas las prioridades disponibles
   obtenerPrioridades(){

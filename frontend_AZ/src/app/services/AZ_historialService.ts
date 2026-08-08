@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 
 @Injectable({
   providedIn:'root'
 })
 export class AZHistorialService {
-  private url = 'http://localhost:3000/api/historial';
 
+  private url = `${environment.apiUrl}/historial`;
+ 
   constructor( private http:HttpClient ){}
 
   obtenerHistorial(){
