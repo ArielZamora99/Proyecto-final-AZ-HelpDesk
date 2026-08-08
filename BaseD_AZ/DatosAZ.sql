@@ -93,7 +93,7 @@ VALUES
 (
 'Juan',
 'zamora',
-'juan@helpdesk.com',
+'juan@gmail.com',
 'juan123',
 '0994489744',
 3
@@ -102,7 +102,7 @@ VALUES
 (
 'Ariel',
 'zamora',
-'ana@helpdesk.com',
+'ariel@gmail.com',
 'ariel123',
 '0995234955',
 3
@@ -128,7 +128,7 @@ VALUES
 
 (
 'HD-000001',
-'Computador no enciende',
+'Internet explorado',
 'El equipo no responde al presionar el botón de encendido.',
 4,
 2,
@@ -177,7 +177,7 @@ VALUES
 4,
 2,
 4,
-4,
+2,
 3
 ),
 
@@ -199,7 +199,7 @@ VALUES
 4,
 2,
 1,
-2,
+1,
 2
 ),
 
